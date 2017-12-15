@@ -3,6 +3,10 @@ var timestampFormatter = require('../src/timestamp-formatter');
 describe('timestamp-formatter', function() {
   it('should return dd/mm/yyyy format by default', function() {
     assert.equal(timestampFormatter('1513378246'), '15/12/2017');
+    assert.equal(timestampFormatter('0'), '01/01/1970');
+    assert.equal(timestampFormatter('253402300800'), '01/01/10000');
+    assert.equal(timestampFormatter('-788918400'), '01/01/1945');
+    assert.equal(timestampFormatter('1525132800'), '01/05/2018');
   });
   it.skip('should return an error message if either the timestamp or the format is invalid', function() {
 
