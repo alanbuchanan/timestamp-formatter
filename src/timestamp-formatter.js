@@ -45,7 +45,7 @@ function timestampFormatter(timestamp, format) {
 
   var formatIncludesDelimiter = ['-', '/'].some(delimiter => format.indexOf(delimiter) !== -1);
 
-  var prependZero = num => num < 10 ? `0${num}` : num
+  var prependZero = num => num < 10 ? `0${num}` : num;
 
   var date = new Date(timestamp * 1000);
 
@@ -58,7 +58,7 @@ function timestampFormatter(timestamp, format) {
   var yy = date.getFullYear().toString().substr(-2);
   var yyyy = date.getFullYear();
 
-  const dict = {
+  var dict = {
     d,
     dd,
     m,
