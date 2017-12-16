@@ -71,4 +71,8 @@ describe('timestamp-formatter', function() {
       '15-May-1982',
     );
   });
+
+  it('should deal with mmm-yy', function() {
+    assert.equal(timestampFormatter('1513378246', 'mmm-yy'), 'Dec-17');
+  });
 });
