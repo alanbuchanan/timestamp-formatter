@@ -8,10 +8,6 @@ describe('timestamp-formatter', function() {
     assert.equal(timestampFormatter('253402300800'), '01/01/10000');
   });
 
-  it('should work if you pass in spaces on the start or end of either the timestamp or the format', function() {
-    assert.equal(timestampFormatter('0'), '01/01/1970');
-  });
-
   it('should be able to take a number as a timestamp', function() {
     assert.equal(timestampFormatter(1513378246), '15/12/2017');
     assert.equal(timestampFormatter(-788918400), '01/01/1945');
