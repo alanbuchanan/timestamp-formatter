@@ -48,4 +48,10 @@ describe('timestamp-formatter', function() {
     assert.equal(timestampFormatter(1513417634, 'yy'), '17');
     assert.equal(timestampFormatter(1513417634, 'yyyy'), '2017');
   });
+  it('should be able to handle dodgy timestamps', function() {
+    assert.include(timestampFormatter('bert'), 'not valid');
+    assert.include(timestampFormatter('000p'), 'not valid');
+    assert.include(timestampFormatter('*£$%'), 'not valid');
+    assert.include(timestampFormatter('e'), 'not valid');
+  });
 });

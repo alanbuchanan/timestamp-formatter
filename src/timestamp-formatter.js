@@ -28,7 +28,7 @@ var months = [
 ];
 
 function timestampFormatter(timestamp, format) {
-  if (!timestamp) {
+  if (!timestamp || isNaN(Number(timestamp))) {
     return 'Oops! That timestamp is not valid. Please ensure you are passing in a valid UNIX timestamp as your `timestamp` argument.'
   }
   timestamp = timestamp.toString().trim();
