@@ -1,5 +1,6 @@
 var assert = require('chai').assert;
 var timestampFormatter = require('../src/timestamp-formatter');
+
 describe('timestamp-formatter', function() {
   
   it('should return dd/mm/yyyy format by default', function() {

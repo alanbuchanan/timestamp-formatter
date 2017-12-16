@@ -1,4 +1,4 @@
-var validFormats = [
+const validFormats = [
   'dd/mm/yy',
   'dd/mm/yyyy',
   'd/m/yy',
@@ -22,7 +22,7 @@ var validFormats = [
   'yyyy'
 ];
 
-var months = [
+const months = [
   "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
 ];
 
@@ -36,28 +36,26 @@ function timestampFormatter(timestamp, format) {
     format = 'dd/mm/yyyy';
   }
 
-  var formatMatchesValidFormats = validFormats.indexOf(format) !== -1;
+  const formatMatchesValidFormats = validFormats.indexOf(format) !== -1;
 
   if (!formatMatchesValidFormats) {
     return 'Oops! That format is not valid. Please ensure your format is one of ' + validFormats.toString();
   }
 
-  var formatIncludesDelimiter = ['-', '/'].some(delimiter => format.indexOf(delimiter) !== -1);
+  const prependZero = num => num < 10 ? `0${num}` : num;
 
-  var prependZero = num => num < 10 ? `0${num}` : num;
+  const date = new Date(timestamp * 1000);
 
-  var date = new Date(timestamp * 1000);
+  const d = date.getDate();
+  const dd = prependZero(date.getDate());
+  const m = date.getMonth() + 1;
+  const mm = prependZero(date.getMonth() + 1);
+  const mmmm = months[date.getMonth()];
+  const mmm = mmmm.substr(0, 3);
+  const yy = date.getFullYear().toString().substr(-2);
+  const yyyy = date.getFullYear();
 
-  var d = date.getDate();
-  var dd = prependZero(date.getDate());
-  var m = date.getMonth() + 1;
-  var mm = prependZero(date.getMonth() + 1);
-  var mmmm = months[date.getMonth()];
-  var mmm = mmmm.substr(0, 3);
-  var yy = date.getFullYear().toString().substr(-2);
-  var yyyy = date.getFullYear();
-
-  var dict = {
+  const dict = {
     d,
     dd,
     m,
@@ -68,9 +66,9 @@ function timestampFormatter(timestamp, format) {
     yyyy
   };
 
-  var newDates = [];
-  var delimiter = format.indexOf('/') !== -1 ? '/' : '-';
-  var dateSplit = format.split(delimiter);
+  const newDates = [];
+  const delimiter = format.indexOf('/') !== -1 ? '/' : '-';
+  const dateSplit = format.split(delimiter);
 
   dateSplit.forEach(item => newDates.push(dict[item]));
 
