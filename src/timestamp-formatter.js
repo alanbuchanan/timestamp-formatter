@@ -1,4 +1,3 @@
-
 var validFormats = [
   'dd/mm/yy',
   'dd/mm/yyyy',
