@@ -17,6 +17,10 @@ describe('timestamp-formatter', function() {
   it('should return an error message if the timestamp is invalid', function() {
     assert.include(timestampFormatter(null), 'not valid');
     assert.include(timestampFormatter(undefined), 'not valid');
+    assert.include(timestampFormatter('bert'), 'not valid');
+    assert.include(timestampFormatter('000p'), 'not valid');
+    assert.include(timestampFormatter('*£$%'), 'not valid');
+    assert.include(timestampFormatter('e'), 'not valid');
   });
 
   it('should return an error message if the format is invalid', function() {
@@ -49,16 +53,13 @@ describe('timestamp-formatter', function() {
     assert.equal(timestampFormatter(1513417634, 'd/m/yy'), '16/12/17');
   });
 
-  it('should return the day, month, or year if only one of those is passed', function() {
+  it('should return the year if only one of those is passed', function() {
     assert.equal(timestampFormatter(1513417634, 'yy'), '17');
     assert.equal(timestampFormatter(1513417634, 'yyyy'), '2017');
   });
 
   it('should be able to handle dodgy timestamps', function() {
-    assert.include(timestampFormatter('bert'), 'not valid');
-    assert.include(timestampFormatter('000p'), 'not valid');
-    assert.include(timestampFormatter('*£$%'), 'not valid');
-    assert.include(timestampFormatter('e'), 'not valid');
+
   });
 
   it('should be able to trim trimmable inputs', function() {
