@@ -58,10 +58,6 @@ describe('timestamp-formatter', function() {
     assert.equal(timestampFormatter(1513417634, 'yyyy'), '2017');
   });
 
-  it('should be able to handle dodgy timestamps', function() {
-
-  });
-
   it('should be able to trim trimmable inputs', function() {
     assert.equal(
       timestampFormatter(' 390294397', 'd-mmmm-yyyy'),
