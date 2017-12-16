@@ -2,7 +2,6 @@ var assert = require('chai').assert;
 var timestampFormatter = require('../src/timestamp-formatter');
 
 describe('timestamp-formatter', function() {
-  
   it('should return dd/mm/yyyy format by default', function() {
     assert.equal(timestampFormatter('1513378246'), '15/12/2017');
     assert.equal(timestampFormatter('0'), '01/01/1970');
@@ -66,4 +65,10 @@ describe('timestamp-formatter', function() {
     assert.include(timestampFormatter('e'), 'not valid');
   });
 
+  it('should be able to trim trimmable inputs', function() {
+    assert.equal(
+      timestampFormatter(' 390294397', 'd-mmmm-yyyy'),
+      '15-May-1982',
+    );
+  });
 });

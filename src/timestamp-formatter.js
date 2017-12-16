@@ -19,16 +19,27 @@ const validFormats = [
   'yyyy-mm-dd',
   'mmm-yy',
   'yy',
-  'yyyy'
+  'yyyy',
 ];
 
 const months = [
-  "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 function timestampFormatter(timestamp, format) {
   if (!timestamp || isNaN(Number(timestamp))) {
-    return 'Oops! That timestamp is not valid. Please ensure you are passing in a valid UNIX timestamp as your `timestamp` argument.'
+    return 'Oops! That timestamp is not valid. Please ensure you are passing in a valid UNIX timestamp as your `timestamp` argument.';
   }
   timestamp = timestamp.toString().trim();
 
@@ -39,10 +50,13 @@ function timestampFormatter(timestamp, format) {
   const formatMatchesValidFormats = validFormats.indexOf(format) !== -1;
 
   if (!formatMatchesValidFormats) {
-    return 'Oops! That format is not valid. Please ensure your format is one of ' + validFormats.toString();
+    return (
+      'Oops! That format is not valid. Please ensure your format is one of ' +
+      validFormats.toString()
+    );
   }
 
-  const prependZero = num => num < 10 ? `0${num}` : num;
+  const prependZero = num => (num < 10 ? `0${num}` : num);
 
   const date = new Date(timestamp * 1000);
 
@@ -52,7 +66,10 @@ function timestampFormatter(timestamp, format) {
   const mm = prependZero(date.getMonth() + 1);
   const mmmm = months[date.getMonth()];
   const mmm = mmmm.substr(0, 3);
-  const yy = date.getFullYear().toString().substr(-2);
+  const yy = date
+    .getFullYear()
+    .toString()
+    .substr(-2);
   const yyyy = date.getFullYear();
 
   const dict = {
@@ -63,7 +80,7 @@ function timestampFormatter(timestamp, format) {
     mmm,
     mmmm,
     yy,
-    yyyy
+    yyyy,
   };
 
   const newDates = [];
