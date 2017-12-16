@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --watch"
+    "test": "mocha --watch",
+    "format": "prettier --write --single-quote --trailing-comma=all **/*.js"
   },
   "author": "",
   "license": "ISC",
