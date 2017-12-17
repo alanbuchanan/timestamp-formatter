@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --watch",
+    "test": "nyc --reporter=html --reporter=text mocha",
     "format": "prettier --write --single-quote --trailing-comma=all **/*.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0"
   },
   "dependencies": {
     "prettier": "^1.9.2"
